@@ -5,8 +5,11 @@ import UserMenu from './header/UserMenu';
 import Navigation from './header/Navigation';
 import Avatar from './header/Avatar';
 import MenuItem from './header/MenuItem';
-import Modal from './modal/Modal';
+import Modal from './modals/Modal';
 import Button from './Button';
+import RegisterModal from './modals/RegisterModal';
+import Heading from './Heading';
+import Input from './Input';
 
 export {
   Header,
@@ -18,4 +21,7 @@ export {
   MenuItem,
   Modal,
   Button,
+  RegisterModal,
+  Heading,
+  Input,
 };

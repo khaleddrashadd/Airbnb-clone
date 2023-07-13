@@ -1,10 +1,19 @@
 'use client';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { Avatar, MenuItem } from '..';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { useRegisterModal } from '@/hooks';
+import { useClickOutside } from '@/hooks';
 
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  const handleClickOutside = useCallback(() => {
+    setIsOpen(false)
+  },[]);
+  const clickRef = useClickOutside(handleClickOutside);
+
+  const registerModal = useRegisterModal();
 
   const toggleMenu = () => {
     setIsOpen(prev => !prev);
@@ -28,7 +37,9 @@ const UserMenu = () => {
         </button>
       </div>
       {isOpen && (
-        <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
+        <div
+          ref={clickRef}
+          className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
             <>
               <MenuItem
@@ -37,7 +48,7 @@ const UserMenu = () => {
               />
               <MenuItem
                 label="Sign up"
-                onClick={() => {}}
+                onClick={registerModal.onOpen}
               />
             </>
           </div>

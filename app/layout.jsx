@@ -1,6 +1,7 @@
-import { Header, Modal } from '@/components';
+import { Header, RegisterModal } from '@/components';
 import './globals.css';
 import { Nunito } from 'next/font/google';
+import Toast from '@/lib/Toast';
 
 const nunito = Nunito({ subsets: ['latin'] });
 
@@ -14,10 +15,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <Modal
-          isOpen
-          actionLabel="submit"
-        />
+        <Toast />
+        <RegisterModal />
         <Header />
         {children}
       </body>
