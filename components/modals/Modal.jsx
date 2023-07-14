@@ -16,7 +16,6 @@ const Modal = ({
   secondaryAction,
   secondaryActionLabel,
 }) => {
-
   const handleClickOutside = useCallback(() => {
     onClose();
   }, []);
@@ -28,7 +27,6 @@ const Modal = ({
     }, 300);
   };
 
-
   const handleSecondaryAction = () => {
     secondaryAction();
   };
@@ -36,19 +34,17 @@ const Modal = ({
   if (!isOpen) {
     return null;
   }
-  
+
   return (
     <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 bg-neutral-800/70">
       {/*content*/}
       <div
-        className={` w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto  h-full  md:h-auto duration-300 border-0 rounded-lg shadow-lg flex flex-col bg-white ${
-          isOpen ? 'translate-y-0 opacity-100' : 'opacity-0 translate-y-full'
-        }`}
+        className="w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full md:h-auto duration-300 border-0 rounded-lg shadow-lg flex flex-col bg-white opacity-100"
         ref={clickRef}>
         {/*header*/}
         <div className="flex items-center p-6 justify-center relative border-b-1 ">
           <button
-            className="p-1border-0 hover:opacity-70 transition absolute left-9"
+            className="p-1 border-0 hover:opacity-70 transition absolute left-9"
             onClick={handleClose}>
             <IoMdClose size={18} />
           </button>
