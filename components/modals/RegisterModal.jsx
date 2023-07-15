@@ -40,6 +40,12 @@ const RegisterModal = () => {
   const handleSubmit = async () => {
     if (!formIsValid) return;
 
+    const data = {
+      email,
+      name,
+      password,
+    };
+
     try {
       setIsLoading(true);
       const res = await postData('/register', data);
