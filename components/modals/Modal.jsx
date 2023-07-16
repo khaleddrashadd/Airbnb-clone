@@ -20,17 +20,15 @@ const Modal = ({
     onClose();
   }, []);
   const clickRef = useClickOutside(handleClickOutside);
-
   const handleClose = () => {
     setTimeout(() => {
       onClose();
     }, 300);
   };
-
   const handleSecondaryAction = () => {
     secondaryAction();
   };
-
+  
   if (!isOpen) {
     return null;
   }
@@ -51,25 +49,27 @@ const Modal = ({
           <div className="text-lg font-semibold">{title}</div>
         </div>
         {/*body*/}
-        <div className="p-6 flex-auto">{body}</div>
-        {/*footer*/}
-        <div className="flex flex-col gap-2 p-6">
-          <div className="flex flex-row items-center gap-4 w-full">
-            {secondaryAction && secondaryActionLabel && (
+        <form>
+          <div className="p-6 flex-auto">{body}</div>
+          {/*footer*/}
+          <div className="flex flex-col gap-2 p-6">
+            <div className="flex flex-row items-center gap-4 w-full">
+              {secondaryAction && secondaryActionLabel && (
+                <Button
+                  disabled={disabled}
+                  label={secondaryActionLabel}
+                  onClick={handleSecondaryAction}
+                />
+              )}
               <Button
                 disabled={disabled}
-                label={secondaryActionLabel}
-                onClick={handleSecondaryAction}
+                label={actionLabel}
+                onClick={handleSubmit}
               />
-            )}
-            <Button
-              disabled={disabled}
-              label={actionLabel}
-              onClick={handleSubmit}
-            />
+            </div>
+            {footer}
           </div>
-          {footer}
-        </div>
+        </form>
       </div>
     </div>
   );

@@ -2,13 +2,16 @@
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
 import { useState } from 'react';
-import { useInput, useLoginModal, useModal } from '@/hooks';
+import { useInput, useModal } from '@/hooks';
 import { Button, Heading, Input, Modal } from '..';
-import { postData } from '@/lib/axios';
+import { signIn } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
-const RegisterModal = () => {
+import { useRouter } from 'next/navigation';
+
+const LoginModal = () => {
   const modal = useModal();
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const {
     value: email,
@@ -20,13 +23,6 @@ const RegisterModal = () => {
     /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/.test(value.trim())
   );
   const {
-    value: name,
-    isValid: nameIsValid,
-    hasError: nameHasError,
-    valueChangeHandler: nameChangeHandler,
-    inputBlurHandler: nameBlurHandler,
-  } = useInput(value => value.trim() !== '');
-  const {
     value: password,
     isValid: passwordIsValid,
     hasError: passwordHasError,
@@ -34,39 +30,42 @@ const RegisterModal = () => {
     inputBlurHandler: passwordBlurHandler,
   } = useInput(value => value.trim().length > 5);
 
-  const formIsValid = emailIsValid && nameIsValid && passwordIsValid;
+  const formIsValid = emailIsValid && passwordIsValid;
 
   const handleSubmit = async () => {
     if (!formIsValid) return;
 
     const data = {
       email,
-      name,
       password,
     };
 
-    try {
-      setIsLoading(true);
-      const res = await postData('/register', data);
-      console.log(res);
-      res?.statusText === 'OK' &&
-        toast.success('Account created successfully!', {
-          duration: 4000,
-        });
-    } catch (err) {
-      console.log(err.message);
-      toast.error(err?.message || 'Something went wrong!', {
+    setIsLoading(true);
+    const res = await signIn('credentials', {
+      ...data,
+      redirect: false,
+    });
+    setIsLoading(false);
+    modal.loginOnClose();
+    
+    router.refresh();
+
+    if (res.error) {
+      toast.error(res?.error || 'Something went wrong!', {
         duration: 4000,
       });
+      return;
     }
-    setIsLoading(false);
+    toast.success('Signed in successfully', {
+      duration: 4000,
+    });
   };
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="Welcome to Aitbnb"
-        subtitle="Create an account"
+        title="Welcome back!"
+        subtitle="Login to your account."
       />
       <Input
         id="email"
@@ -79,19 +78,9 @@ const RegisterModal = () => {
         errorTitle="Please provide a valid email address."
       />
       <Input
-        id="name"
-        label="Name"
-        disabled={isLoading}
-        error={nameHasError}
-        onChange={nameChangeHandler}
-        onBlur={nameBlurHandler}
-        value={name}
-        errorTitle="Please provide a valid name."
-      />
-      <Input
         id="password"
-        type='password'
         label="Password"
+        type="password"
         disabled={isLoading}
         error={passwordHasError}
         onChange={passwordChangeHandler}
@@ -120,14 +109,14 @@ const RegisterModal = () => {
       />
       <div>
         <p className="text-center text-gray-500">
-          Already have an account?{' '}
+          You don't have an account yet?{' '}
           <span
             onClick={() => {
-              modal.registerOnClose();
-              modal.loginOnOpen();
+              modal.loginOnClose();
+              modal.registerOnOpen();
             }}
             className="text-rose-500 cursor-pointer hover:underline">
-            Login
+            Register
           </span>
         </p>
       </div>
@@ -136,14 +125,14 @@ const RegisterModal = () => {
   return (
     <Modal
       disabled={isLoading || !formIsValid}
-      isOpen={modal.registerIsOpen}
-      title="Register"
+      isOpen={modal.loginIsOpen}
+      title="Login"
       actionLabel="Continue"
       handleSubmit={handleSubmit}
-      onClose={modal.registerOnClose}
+      onClose={modal.loginOnClose}
       body={bodyContent}
       footer={footerContent}
     />
   );
 };
-export default RegisterModal;
+export default LoginModal;

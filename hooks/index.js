@@ -1,5 +1,5 @@
 import useClickOutside from './useClickOutside';
 import useInput from './useInput';
-import useRegisterModal from './useRegisterModal';
+import useModal from './useModal';
 
-export { useClickOutside, useRegisterModal, useInput };
+export { useClickOutside, useModal, useInput };

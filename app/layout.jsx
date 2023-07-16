@@ -1,7 +1,8 @@
-import { Header, RegisterModal } from '@/components';
+import { Header, LoginModal, RegisterModal } from '@/components';
 import './globals.css';
 import { Nunito } from 'next/font/google';
 import Toast from '@/lib/Toast';
+import { getCurrentUser } from './actions/getCurrentUser';
 
 const nunito = Nunito({ subsets: ['latin'] });
 
@@ -11,13 +12,16 @@ export const metadata = {
     'Find the perfect place to stay at an amazing price. Belong anywhere with Airbnb.',
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const currentUser = await getCurrentUser();
+  
   return (
     <html lang="en">
       <body className={nunito.className}>
         <Toast />
         <RegisterModal />
-        <Header />
+        <LoginModal />
+        <Header currentUser={currentUser} />
         {children}
       </body>
     </html>

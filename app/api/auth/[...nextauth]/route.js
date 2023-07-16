@@ -6,8 +6,7 @@ import { PrismaAdapter } from '@auth/prisma-adapter';
 import { prisma } from '@/lib/prismadb';
 import bcrypt from 'bcrypt';
 
-export default NextAuth({
-  adapter: PrismaAdapter(prisma),
+export const options = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -20,20 +19,21 @@ export default NextAuth({
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        email: { label: 'email', type: 'text' },
-        password: { label: 'password', type: 'password' },
+        email: { label: 'Email', type: 'text' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) {
-          throw new Error('Invalid credentials');
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error('Missing credentials');
         }
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email,
+            email: credentials?.email,
           },
         });
-        if (!user || user?.hashedPassword) {
-          throw new Error('Invalid credentials');
+
+        if (!user?.hashedPassword) {
+          throw new Error('No user found');
         }
 
         const isValid = await bcrypt.compare(
@@ -48,7 +48,8 @@ export default NextAuth({
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_URL,
+
   session: {
     jwt: true,
   },
@@ -56,4 +57,8 @@ export default NextAuth({
     signIn: '/',
   },
   debug: process.env.NODE_ENV === 'development',
-});
+};
+
+const handler = NextAuth({ adapter: PrismaAdapter(prisma), ...options });
+
+export { handler as GET, handler as POST };
