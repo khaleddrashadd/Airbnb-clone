@@ -8,11 +8,10 @@ import { signIn } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
-const LoginModal = () => {
+const LoginModal = ({ date }) => {
   const modal = useModal();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-
   const {
     value: email,
     isValid: emailIsValid,
@@ -47,7 +46,7 @@ const LoginModal = () => {
     });
     setIsLoading(false);
     modal.loginOnClose();
-    
+
     router.refresh();
 
     if (res.error) {
@@ -98,14 +97,20 @@ const LoginModal = () => {
         disabled={isLoading}
         label="Continue with Google"
         outline
-        onClick={() => {}}
+        onClick={e => {
+          e.preventDefault();
+          signIn('google');
+        }}
       />
       <Button
         Icon={AiFillGithub}
         disabled={isLoading}
         label="Continue with Github"
         outline
-        onClick={() => {}}
+        onClick={e => {
+          e.preventDefault();
+          signIn('github');
+        }}
       />
       <div>
         <p className="text-center text-gray-500">

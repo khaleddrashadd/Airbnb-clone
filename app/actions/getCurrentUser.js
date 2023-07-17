@@ -1,14 +1,17 @@
 import { getServerSession } from 'next-auth';
-import { options } from '../api/auth/[...nextauth]/route';
+import { OPTIONS } from '../api/auth/[...nextauth]/route';
 import { prisma } from '@/lib/prismadb';
 
 export const getSession = async () => {
-  return await getServerSession(options);
+  return await getServerSession(OPTIONS);
 };
 
 export const getCurrentUser = async () => {
   try {
     const session = await getSession();
+    console.log("💥 ~ file: getCurrentUser.js:12 ~ getCurrentUser ~ session", session)
+
+    
 
     if (!session?.user) {
       return null;

@@ -2,10 +2,11 @@
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
 import { useState } from 'react';
-import { useInput, useLoginModal, useModal } from '@/hooks';
+import { useInput, useModal } from '@/hooks';
 import { Button, Heading, Input, Modal } from '..';
 import { postData } from '@/lib/axios';
 import { toast } from 'react-hot-toast';
+import { signIn } from 'next-auth/react';
 const RegisterModal = () => {
   const modal = useModal();
   const [isLoading, setIsLoading] = useState(false);
@@ -90,7 +91,7 @@ const RegisterModal = () => {
       />
       <Input
         id="password"
-        type='password'
+        type="password"
         label="Password"
         disabled={isLoading}
         error={passwordHasError}
@@ -109,14 +110,20 @@ const RegisterModal = () => {
         disabled={isLoading}
         label="Continue with Google"
         outline
-        onClick={() => {}}
+        onClick={e => {
+          e.preventDefault();
+          signIn('google');
+        }}
       />
       <Button
         Icon={AiFillGithub}
         disabled={isLoading}
         label="Continue with Github"
         outline
-        onClick={() => {}}
+        onClick={e => {
+          e.preventDefault();
+          signIn('github');
+        }}
       />
       <div>
         <p className="text-center text-gray-500">

@@ -7,7 +7,7 @@ import { getCurrentUser } from './actions/getCurrentUser';
 const nunito = Nunito({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Ait bnb clone',
+  title: 'Airbnb clone',
   description:
     'Find the perfect place to stay at an amazing price. Belong anywhere with Airbnb.',
 };
