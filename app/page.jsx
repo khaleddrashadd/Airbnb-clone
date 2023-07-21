@@ -1,7 +1,11 @@
 "use client";
 
+import { Categories } from '@/components';
+
 const HomePage = () => {
-  return <main className="flex justify-center items-center absolute inset-0 font-bold text-3xl">HomePage</main>;
+  return <main className="">
+    <Categories/>
+  </main>;
 };
 
 export default HomePage;

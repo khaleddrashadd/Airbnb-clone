@@ -9,9 +9,6 @@ export const getSession = async () => {
 export const getCurrentUser = async () => {
   try {
     const session = await getSession();
-    console.log("💥 ~ file: getCurrentUser.js:12 ~ getCurrentUser ~ session", session)
-
-    
 
     if (!session?.user) {
       return null;

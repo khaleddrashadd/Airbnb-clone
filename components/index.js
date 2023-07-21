@@ -8,9 +8,14 @@ import MenuItem from './header/MenuItem';
 import Modal from './modals/Modal';
 import Button from './Button';
 import RegisterModal from './modals/RegisterModal';
-import Heading from './Heading';
-import Input from './Input';
+import Heading from './modals/Heading';
+import Input from './inputs/Input';
 import LoginModal from './modals/LoginModal';
+import Categories from './Categories';
+import CategoryBox from './CategoryBox';
+import RentModal from './modals/RentModal';
+import CategoryInput from './inputs/CategoryInput';
+import CountrySelect from './inputs/CountrySelect';
 
 export {
   Header,
@@ -26,4 +31,9 @@ export {
   Heading,
   Input,
   LoginModal,
+  Categories,
+  CategoryBox,
+  RentModal,
+  CategoryInput,
+  CountrySelect,
 };

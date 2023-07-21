@@ -8,7 +8,7 @@ import { signIn } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
-const LoginModal = ({ date }) => {
+const LoginModal = () => {
   const modal = useModal();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -97,20 +97,16 @@ const LoginModal = ({ date }) => {
         disabled={isLoading}
         label="Continue with Google"
         outline
-        onClick={e => {
-          e.preventDefault();
-          signIn('google');
-        }}
+        type='button'
+        onClick={() => signIn('google')}
       />
       <Button
         Icon={AiFillGithub}
         disabled={isLoading}
         label="Continue with Github"
         outline
-        onClick={e => {
-          e.preventDefault();
-          signIn('github');
-        }}
+        type='button'
+        onClick={()=> signIn('github')}
       />
       <div>
         <p className="text-center text-gray-500">

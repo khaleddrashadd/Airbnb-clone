@@ -1,8 +1,9 @@
-const Button = ({ label, onClick, disabled, outline, small, Icon }) => {
+const Button = ({ label, onClick, disabled, outline, small, Icon,type }) => {
   return (
     <button
       disabled={disabled}
       onClick={onClick}
+      type={type}
       className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full
         ${
           outline

@@ -19,11 +19,19 @@ const UserMenu = ({ currentUser }) => {
     setIsOpen(prev => !prev);
   };
 
+  const handleRent = () => {
+    if (!currentUser) {
+      modal.loginOnOpen()
+      return;
+    }
+    modal.rentModalOnOpen()
+  };
+
   return (
     <nav className="relative">
       <div className="flex items-center gap-3">
         <button
-          onClick={() => {}}
+          onClick={handleRent}
           className="hidden md:block font-semibold text-sm py-3 px-4 rounded-full hover:bg-neutral-100 transition">
           Airbnb your home
         </button>
@@ -32,7 +40,7 @@ const UserMenu = ({ currentUser }) => {
           className="p-4 md:py-1 md:px-2 border-1 border-neutral-200 rounded-full flex items-center gap-3 hover:shadow-sm transition">
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </button>
       </div>
@@ -45,7 +53,7 @@ const UserMenu = ({ currentUser }) => {
               <>
                 <MenuItem
                   label="My Trips"
-                  onClick={()=>{}}
+                  onClick={() => {}}
                 />
                 <MenuItem
                   label="My favorites"
@@ -61,9 +69,9 @@ const UserMenu = ({ currentUser }) => {
                 />
                 <MenuItem
                   label="Airbnb my home"
-                  onClick={() => {}}
+                  onClick={() => modal.rentModalOnOpen()}
                 />
-                <hr/>
+                <hr />
                 <MenuItem
                   label="Sign out"
                   onClick={signOut}

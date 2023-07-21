@@ -49,13 +49,11 @@ const RegisterModal = () => {
     try {
       setIsLoading(true);
       const res = await postData('/register', data);
-      console.log(res);
       res?.statusText === 'OK' &&
         toast.success('Account created successfully!', {
           duration: 4000,
         });
     } catch (err) {
-      console.log(err.message);
       toast.error(err?.message || 'Something went wrong!', {
         duration: 4000,
       });

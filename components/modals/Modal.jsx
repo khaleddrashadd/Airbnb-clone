@@ -28,13 +28,12 @@ const Modal = ({
   const handleSecondaryAction = () => {
     secondaryAction();
   };
-  
+
   if (!isOpen) {
     return null;
   }
-
   return (
-    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 bg-neutral-800/70">
+    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 bg-neutral-800/70 backdrop-blur-sm">
       {/*content*/}
       <div
         className="w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full md:h-auto duration-300 border-0 rounded-lg shadow-lg flex flex-col bg-white opacity-100"
@@ -58,13 +57,19 @@ const Modal = ({
                 <Button
                   disabled={disabled}
                   label={secondaryActionLabel}
-                  onClick={handleSecondaryAction}
+                  onClick={e => {
+                    e.preventDefault();
+                    handleSecondaryAction();
+                  }}
                 />
               )}
               <Button
                 disabled={disabled}
                 label={actionLabel}
-                onClick={handleSubmit}
+                onClick={e => {
+                  e.preventDefault();
+                  handleSubmit();
+                }}
               />
             </div>
             {footer}

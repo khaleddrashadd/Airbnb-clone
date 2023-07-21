@@ -1,4 +1,4 @@
-import { Header, LoginModal, RegisterModal } from '@/components';
+import { Header, LoginModal, RegisterModal, RentModal } from '@/components';
 import './globals.css';
 import { Nunito } from 'next/font/google';
 import Toast from '@/lib/Toast';
@@ -14,11 +14,12 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const currentUser = await getCurrentUser();
-  
+
   return (
     <html lang="en">
       <body className={nunito.className}>
         <Toast />
+        <RentModal/>
         <RegisterModal />
         <LoginModal />
         <Header currentUser={currentUser} />
