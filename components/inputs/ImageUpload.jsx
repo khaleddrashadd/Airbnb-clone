@@ -12,14 +12,14 @@ const ImageUpload = ({ value, onChange }) => {
   return (
     <CldUploadWidget
       onUpload={handleUpload}
-      uploadPrest="wqoqjnzp"
+      uploadPreset="wqoqjnzp"
       options={{
         maxFiles: 1,
       }}>
       {({ open }) => {
         function handleOnClick(e) {
           e.preventDefault();
-          open();
+          open?.();
         }
         return (
           <div
