@@ -17,6 +17,8 @@ import RentModal from './modals/RentModal';
 import CategoryInput from './inputs/CategoryInput';
 import CountrySelect from './inputs/CountrySelect';
 import Map from './Map';
+import Counter from './Counter';
+import AdjustButton from './AdjustButton';
 
 export {
   Header,
@@ -38,4 +40,6 @@ export {
   CategoryInput,
   CountrySelect,
   Map,
+  Counter,
+  AdjustButton
 };

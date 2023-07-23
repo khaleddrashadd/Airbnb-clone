@@ -1,6 +1,6 @@
 'use client';
 import { useModal } from '@/hooks';
-import { CategoryInput, CountrySelect, Heading, Map, Modal } from '..';
+import { CategoryInput, Counter, CountrySelect, Heading, Map, Modal } from '..';
 import { useReducer, useState } from 'react';
 import { categories } from '@/data';
 
@@ -15,8 +15,9 @@ const STEPS = {
 const INITIAL_STATE = {
   category: '',
   location: null,
-  gurestCount: 1,
-  bedroomCount: 1,
+  guestCount: 1,
+  roomCount: 1,
+  bathroomCount: 1,
   imageSrc: '',
   price: 1,
   title: '',
@@ -34,6 +35,21 @@ const rentReducer = (state, action) => {
         ...state,
         location: action.payload,
       };
+    case 'GUEST_COUNT':
+      return {
+        ...state,
+        guestCount: action.payload,
+      };
+    case 'ROOM_COUNT':
+      return {
+        ...state,
+        roomCount: action.payload,
+      };
+    case 'BATHROOM_COUNT':
+      return {
+        ...state,
+        bathroomCount: action.payload,
+      };
 
     default:
       break;
@@ -47,12 +63,21 @@ const RentModal = () => {
 
   const handleChooseCategory = category => {
     dispatch({ type: 'CATEGORY', payload: category });
-    console.log(category);
   };
 
   const handleCountryChange = country => {
     dispatch({ type: 'LOCATION', payload: country });
-    console.log(country);
+  };
+
+  const handleGuestCount = guestCount => {
+    dispatch({ type: 'GUEST_COUNT', payload: guestCount });
+  };
+
+  const handleRoomsCount = roomCount => {
+    dispatch({ type: 'ROOM_COUNT', payload: roomCount });
+  };
+  const handleBathroomsCount = bathroomsCount => {
+    dispatch({ type: 'BATHROOM_COUNT', payload: bathroomsCount });
   };
 
   const onBack = () => {
@@ -99,9 +124,37 @@ const RentModal = () => {
       </div>
     );
   }
+  if (steps === STEPS.info) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          subtitle="Share some details about your place"
+          title="What amenities do you have?"
+        />
+        <Counter
+          title="Guests"
+          subtitle="How many guests do you allow?"
+          value={state.guestCount}
+          onChange={handleGuestCount}
+        />
+        <Counter
+          title="Rooms"
+          subtitle="How many rooms do you have?"
+          value={state.roomCount}
+          onChange={handleRoomsCount}
+        />
+        <Counter
+          title="Bathrooms"
+          subtitle="How many bathrooms do you have?"
+          value={state.bathroomCount}
+          onChange={handleBathroomsCount}
+        />
+      </div>
+    );
+  }
   const isDisabled =
     (!state.category && steps === STEPS.category) ||
-    (!state.location && steps === STEPS.location);
+    (!state.location && steps === STEPS.location) ;
   return (
     <Modal
       isOpen={modal.rentModalIsOpen}

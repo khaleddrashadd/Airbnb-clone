@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
 const INITIAL_POSITION = [51.505, -0.09];
 
 const Map = ({ center }) => {
-const position = center ?? INITIAL_POSITION;
+  const position = center ?? INITIAL_POSITION;
   return (
     <MapContainer
       center={position}
@@ -23,7 +23,7 @@ const position = center ?? INITIAL_POSITION;
       scrollWheelZoom={false}
       className="h-[35vh] rounded-lg">
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-     {center&& <Marker position={center}></Marker>}
+      {center && <Marker position={center}></Marker>}
     </MapContainer>
   );
 };
