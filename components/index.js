@@ -19,6 +19,7 @@ import CountrySelect from './inputs/CountrySelect';
 import Map from './Map';
 import Counter from './Counter';
 import AdjustButton from './AdjustButton';
+import ImageUpload from './inputs/ImageUpload';
 
 export {
   Header,
@@ -41,5 +42,6 @@ export {
   CountrySelect,
   Map,
   Counter,
-  AdjustButton
+  AdjustButton,
+  ImageUpload,
 };

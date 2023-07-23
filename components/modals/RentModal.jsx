@@ -1,6 +1,14 @@
 'use client';
 import { useModal } from '@/hooks';
-import { CategoryInput, Counter, CountrySelect, Heading, Map, Modal } from '..';
+import {
+  CategoryInput,
+  Counter,
+  CountrySelect,
+  Heading,
+  ImageUpload,
+  Map,
+  Modal,
+} from '..';
 import { useReducer, useState } from 'react';
 import { categories } from '@/data';
 
@@ -50,6 +58,11 @@ const rentReducer = (state, action) => {
         ...state,
         bathroomCount: action.payload,
       };
+    case 'IMAGE_SRC':
+      return {
+        ...state,
+        imageSrc: action.payload,
+      };
 
     default:
       break;
@@ -78,6 +91,10 @@ const RentModal = () => {
   };
   const handleBathroomsCount = bathroomsCount => {
     dispatch({ type: 'BATHROOM_COUNT', payload: bathroomsCount });
+  };
+
+  const handleUploadPhoto = imageSrc => {
+    dispatch({ type: 'IMAGE_SRC', payload: imageSrc });
   };
 
   const onBack = () => {
@@ -152,9 +169,55 @@ const RentModal = () => {
       </div>
     );
   }
+  if (steps === STEPS.images) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          subtitle="Add a photo that best describes your place"
+          title="Show guests what your place look!"
+        />
+        <ImageUpload
+          value={state.imageSrc}
+          onChange={handleUploadPhoto}
+        />
+      </div>
+    );
+  }
+  // if (steps === STEPS.description) {
+  //   bodyContent = (
+  //     <div className="flex flex-col gap-8">
+  //       <Heading
+  //         subtitle="Share some details about your place"
+  //         title="What amenities do you have?"
+  //       />
+  //       <Counter
+  //         title="Guests"
+  //         subtitle="How many guests do you allow?"
+  //         value={state.guestCount}
+  //         onChange={handleGuestCount}
+  //       />
+  //     </div>
+  //   );
+  // }
+  // if (steps === STEPS.price) {
+  //   bodyContent = (
+  //     <div className="flex flex-col gap-8">
+  //       <Heading
+  //         subtitle="Share some details about your place"
+  //         title="What amenities do you have?"
+  //       />
+  //       <Counter
+  //         title="Guests"
+  //         subtitle="How many guests do you allow?"
+  //         value={state.guestCount}
+  //         onChange={handleGuestCount}
+  //       />
+  //     </div>
+  //   );
+  // }
   const isDisabled =
     (!state.category && steps === STEPS.category) ||
-    (!state.location && steps === STEPS.location) ;
+    (!state.location && steps === STEPS.location);
   return (
     <Modal
       isOpen={modal.rentModalIsOpen}

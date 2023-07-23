@@ -21,6 +21,7 @@
     "leaflet": "^1.9.4",
     "next": "13.4.7",
     "next-auth": "^4.20.1",
+    "next-cloudinary": "^4.15.0",
     "next-superjson-plugin": "^0.5.9",
     "postcss": "8.4.26",
     "query-string": "^8.1.0",
