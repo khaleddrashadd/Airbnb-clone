@@ -55,7 +55,7 @@ const Modal = ({
             <div className="flex flex-row items-center gap-4 w-full">
               {secondaryAction && secondaryActionLabel && (
                 <Button
-                  disabled={disabled}
+                  // disabled={disabled}
                   label={secondaryActionLabel}
                   onClick={e => {
                     e.preventDefault();

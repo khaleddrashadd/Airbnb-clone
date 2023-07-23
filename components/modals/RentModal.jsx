@@ -1,6 +1,6 @@
 'use client';
 import { useModal } from '@/hooks';
-import { CategoryInput, CountrySelect, Heading, Modal } from '..';
+import { CategoryInput, CountrySelect, Heading, Map, Modal } from '..';
 import { useReducer, useState } from 'react';
 import { categories } from '@/data';
 
@@ -29,6 +29,11 @@ const rentReducer = (state, action) => {
         ...state,
         category: action.payload,
       };
+    case 'LOCATION':
+      return {
+        ...state,
+        location: action.payload,
+      };
 
     default:
       break;
@@ -44,6 +49,12 @@ const RentModal = () => {
     dispatch({ type: 'CATEGORY', payload: category });
     console.log(category);
   };
+
+  const handleCountryChange = country => {
+    dispatch({ type: 'LOCATION', payload: country });
+    console.log(country);
+  };
+
   const onBack = () => {
     setSteps(prev => prev - 1);
   };
@@ -77,14 +88,20 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          subtitle="Help guests fond you!"
+          subtitle="Help guests to find you!"
           title="Where's your place located?"
         />
-        <CountrySelect/>
+        <CountrySelect
+          onChange={handleCountryChange}
+          value={state.location}
+        />
+        <Map center={state?.location?.lating} />
       </div>
     );
   }
-
+  const isDisabled =
+    (!state.category && steps === STEPS.category) ||
+    (!state.location && steps === STEPS.location);
   return (
     <Modal
       isOpen={modal.rentModalIsOpen}
@@ -95,6 +112,7 @@ const RentModal = () => {
       secondaryActionLabel={secondaryActionLabel}
       title="Airbnb your home"
       body={bodyContent}
+      disabled={isDisabled}
     />
   );
 };

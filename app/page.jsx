@@ -4,7 +4,7 @@ import { Categories } from '@/components';
 
 const HomePage = () => {
   return <main className="">
-    <Categories/>
+    {/* <Categories/> */}
   </main>;
 };
 

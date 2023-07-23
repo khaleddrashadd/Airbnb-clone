@@ -16,6 +16,7 @@ import CategoryBox from './CategoryBox';
 import RentModal from './modals/RentModal';
 import CategoryInput from './inputs/CategoryInput';
 import CountrySelect from './inputs/CountrySelect';
+import Map from './Map';
 
 export {
   Header,
@@ -36,4 +37,5 @@ export {
   RentModal,
   CategoryInput,
   CountrySelect,
+  Map,
 };
