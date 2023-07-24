@@ -4,8 +4,8 @@ import { CldUploadWidget } from 'next-cloudinary';
 import Image from 'next/image';
 import { TbPhotoPlus } from 'react-icons/tb';
 
-const ImageUpload = ({ value, onChange }) => {
-  console.log(value)
+const ImageUpload = ({ value, onChange, isError }) => {
+  console.log(value);
   const handleUpload = e => {
     onChange(e.info.secure_url);
   };
@@ -24,7 +24,9 @@ const ImageUpload = ({ value, onChange }) => {
         return (
           <div
             onClick={handleOnClick}
-            className="relative cursor-pointer hover:opacity-70 transition border-dashed border-2 p-20 border-neutral-300 flex flex-col items-center justify-center gap-4 text-neutral-600">
+            className={`relative cursor-pointer hover:opacity-70 transition border-dashed border-2 p-20 ${
+              !isError ? 'border-neutral-300' : 'border-rose-400'
+            } flex flex-col items-center justify-center gap-4 text-neutral-600`}>
             <TbPhotoPlus size={50} />
             <p className="text-lg font-semibold">Click To Upload</p>
             {value && (

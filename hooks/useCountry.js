@@ -1,5 +1,4 @@
 import { formattedCountries } from '@/lib/worldCountries';
-import countries from 'world-countries';
 
 const useCountry = () => {
   const getAll = formattedCountries;

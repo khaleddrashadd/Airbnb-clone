@@ -1,21 +1,18 @@
 'use client';
 import useCountry from '@/hooks/useCountry';
-import { useState } from 'react';
 import Select from 'react-select';
 
-const CountrySelect = ({value, onChange}) => {
-  const { getCountryByName, getAll } = useCountry();
+const CountrySelect = ({ value, onChange, isError }) => {
+  const {getAll } = useCountry();
 
-  const handleChangeCountry = e => {
-    console.log(e?.label);
-  };
   return (
-    <div >
+    <div>
       <Select
         placeholder="Select Country"
         options={getAll}
         isSearchable
         isClearable
+        className={`${isError ? 'border-rose-500' : 'border-neutral-200'}`}
         classNames={{
           control: () => 'p-3 border-2',
           input: () => 'text-lg',
@@ -31,7 +28,7 @@ const CountrySelect = ({value, onChange}) => {
           },
         })}
         value={value}
-        onChange={(value)=>onChange(value)}
+        onChange={value => onChange(value)}
         formatOptionLabel={option => (
           <div className="flex items-center gap-3">
             <div>{option.flag}</div>
