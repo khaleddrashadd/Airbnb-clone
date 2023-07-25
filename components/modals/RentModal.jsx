@@ -14,6 +14,7 @@ import { useReducer, useState } from 'react';
 import { categories } from '@/data';
 import { postData } from '@/lib/axios';
 import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const STEPS = {
   category: 0,
@@ -81,6 +82,8 @@ const rentReducer = (state, action) => {
         ...state,
         price: action.payload,
       };
+    case 'RESET':
+      return INITIAL_STATE;
 
     default:
       return state;
@@ -92,6 +95,7 @@ const RentModal = () => {
   const [steps, setSteps] = useState(STEPS.category);
   const [state, dispatch] = useReducer(rentReducer, INITIAL_STATE);
   const [isError, setIsError] = useState(false);
+  const router = useRouter();
 
   const handleChooseCategory = category => {
     category && setIsError(false);
@@ -152,12 +156,16 @@ const RentModal = () => {
       onNext();
       return;
     } else {
-      postData('rent', state)
-        .then(res =>
-          toast.success('Created', {
+      postData('listings', (state))
+        .then(res => {
+          toast.success('Listing created successfully!', {
             duration: 4000,
-          })
-        )
+          });
+          router.refresh();
+          dispatch('RESET');
+          modal.rentModalOnClose();
+          setSteps(STEPS.category);
+        })
         .catch(err =>
           toast.error(err?.message || 'Something went wrong!', {
             duration: 4000,

@@ -19,7 +19,7 @@ const ImageUpload = ({ value, onChange, isError }) => {
       {({ open }) => {
         function handleOnClick(e) {
           e.preventDefault();
-          open?.();
+          open&&open();
         }
         return (
           <div
