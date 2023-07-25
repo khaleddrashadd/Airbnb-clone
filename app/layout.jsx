@@ -2,7 +2,7 @@ import { Header, LoginModal, RegisterModal, RentModal } from '@/components';
 import './globals.css';
 import { Nunito } from 'next/font/google';
 import Toast from '@/lib/Toast';
-import { getCurrentUser } from './actions/getCurrentUser';
+import { getCurrentUser } from './actions';
 
 const nunito = Nunito({ subsets: ['latin'] });
 
@@ -19,7 +19,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body className={nunito.className}>
         <Toast />
-        <RentModal/>
+        <RentModal />
         <RegisterModal />
         <LoginModal />
         <Header currentUser={currentUser} />
