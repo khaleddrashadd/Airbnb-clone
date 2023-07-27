@@ -17,9 +17,6 @@ const ListingCard = ({
 }) => {
   const { getCountryByName } = useCountry();
 
-  const start = new Date(reservation?.startDate);
-  const end = new Date(reservation?.endDate);
-  
   const getReservationDate = () => {
     if (!reservation) return null;
     const start = new Date(reservation?.startDate);
