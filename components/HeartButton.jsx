@@ -19,7 +19,7 @@ const HeartButton = ({ listingId, currentUser }) => {
   const toggleFavorite = e => {
     e.preventDefault();
     if (!currentUser) {
-      modal.registerOnOpen;
+      modal.registerOnOpen();
       return;
     }
     if (hasFavorited) {

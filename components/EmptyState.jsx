@@ -4,6 +4,7 @@ import { Button, Heading } from '.';
 const EmptyState = ({
   title = 'No exact matches',
   subtitle = 'Try changing or removing some of your filters',
+  label="Remove all filters",
   showReset,
 }) => {
   return (
@@ -20,7 +21,7 @@ const EmptyState = ({
             replace>
             <Button
               outline
-              label="Remove all filters"
+              label={label}
             />
           </Link>
         )}
