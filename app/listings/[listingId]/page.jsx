@@ -1,7 +1,6 @@
 import { getCurrentUser } from '@/app/actions';
 import { getListingById } from '@/app/actions/getListingById';
-import { EmptyState } from '@/components';
-import ListingClient from './ListingClient';
+import { EmptyState, ListingClient } from '@/components';
 
 const page = async ({ params: { listingId } }) => {
   const listing = await getListingById(listingId);

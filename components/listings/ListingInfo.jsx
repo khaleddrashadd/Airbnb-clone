@@ -1,6 +1,5 @@
-import { Avatar, Map } from '@/components';
+import { Avatar, ListingCategory, Map } from '@/components';
 import useCountry from '@/hooks/useCountry';
-import ListingCategory from './ListingCategory';
 
 const ListingInfo = ({
   user,
@@ -30,7 +29,6 @@ const ListingInfo = ({
         <hr />
         {category && (
           <ListingCategory
-            category={category}
             Icon={category?.icon}
             label={category?.label}
             description={category?.description}

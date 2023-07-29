@@ -23,6 +23,11 @@ import ImageUpload from './inputs/ImageUpload';
 import ListingCard from './listings/ListingCard';
 import EmptyState from './EmptyState';
 import HeartButton from './HeartButton';
+import ListingClient from './listings/ListingClient';
+import ListingCategory from './listings/ListingCategory';
+import ListingHead from './listings/ListingHead';
+import ListingInfo from './listings/ListingInfo';
+import ListingReservation from './listings/ListingReservation';
 
 export {
   Header,
@@ -50,4 +55,9 @@ export {
   ListingCard,
   EmptyState,
   HeartButton,
+  ListingClient,
+  ListingCategory,
+  ListingHead,
+  ListingInfo,
+  ListingReservation,
 };
