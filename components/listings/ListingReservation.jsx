@@ -14,7 +14,7 @@ const ListingReservation = ({
   disabled,
 }) => {
   return (
-    <div className="bg-white rounded-xl border-1 border-neutral-200 overflow-hidden">
+    <div className="bg-white rounded-xl border-1 text-center border-neutral-200 overflow-hidden">
       <div className="flex items-center gap-1 p-4">
         <span className="text-2xl font-semibold">{price}</span>
         <span className="font-light text-neutral-600">/ night</span>

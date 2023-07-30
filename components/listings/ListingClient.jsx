@@ -1,7 +1,12 @@
 'use client';
 import { eachDayOfInterval, differenceInCalendarDays } from 'date-fns';
 
-import { Container, ListingHead, ListingInfo, ListingReservation } from '@/components';
+import {
+  Container,
+  ListingHead,
+  ListingInfo,
+  ListingReservation,
+} from '@/components';
 import { categories } from '@/data';
 import { useModal } from '@/hooks';
 import { postData } from '@/lib/axios';
@@ -10,8 +15,8 @@ import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
 const intitalDate = {
-  startDate: null,
-  endDate: null,
+  startDate: new Date(),
+  endDate: new Date(),
   key: 'selection',
 };
 
@@ -37,10 +42,11 @@ const ListingClient = ({ listing, currentUser, reservations = [] }) => {
     if (!currentUser) return modal.registerOnOpen();
 
     setIsLoading(true);
-    postData('api/reservations', {
+    postData('reservations', {
       totalPrice,
       startDate: dateRange.startDate,
       endDate: dateRange.endDate,
+      listingId: listing?.id,
     })
       .then(res => {
         toast.success('Reservation created successfully!', { duration: 2000 });
@@ -54,7 +60,6 @@ const ListingClient = ({ listing, currentUser, reservations = [] }) => {
       })
       .finally(() => setIsLoading(false));
   };
-
   useEffect(() => {
     if (!dateRange.startDate || !dateRange.endDate) return;
 
@@ -77,9 +82,9 @@ const ListingClient = ({ listing, currentUser, reservations = [] }) => {
             title={listing?.title}
             currentUser={currentUser}
           />
-          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-4">
+          <div className="flex flex-wrap justify-center sm:justify-between gap-8">
             <ListingInfo
-              className="flex flex-wrap items-center justify-center sm:justify-start gap-"
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-6"
               bathroomCount={listing?.bathroomCount}
               category={category}
               description={listing?.description}
@@ -88,14 +93,14 @@ const ListingClient = ({ listing, currentUser, reservations = [] }) => {
               roomCount={listing?.roomCount}
               user={listing?.user}
             />
-            <div className="order-first md:order-last mb-10">
+            <div className="order-first sm:order-last mb-10 flex-1">
               <ListingReservation
                 price={listing?.price}
                 totalPrice={totalPrice}
                 dateRange={dateRange}
                 onSubmit={handleCreateReservation}
                 onChange={range => setDateRange(range.selection)}
-                disabledDates={disabledDates}
+                disabledDates={disabledDates?.flat()}
                 disabled={isLoading}
               />
             </div>

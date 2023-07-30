@@ -14,7 +14,7 @@ const ListingInfo = ({
   const { lating } = getCountryByName(locationValue);
 
   return (
-    <div className="w-[270px]">
+    <div className="flex-1">
       <div className="flex flex-col gap-2">
         <div className="text-xl font-semibold flex items-center gap-2">
           <span>Hosted by {user?.name}</span>
