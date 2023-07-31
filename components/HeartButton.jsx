@@ -1,7 +1,7 @@
 'use client';
 
 import { useModal } from '@/hooks';
-import { addTofavorite, removeFromfavorite } from '@/lib/axios';
+import { addTofavorite, removeData } from '@/lib/axios';
 import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 import { toast } from 'react-hot-toast';
@@ -23,7 +23,7 @@ const HeartButton = ({ listingId, currentUser }) => {
       return;
     }
     if (hasFavorited) {
-      removeFromfavorite(listingId)
+      removeData('favorite', listingId)
         .then(res => {
           toast.success('Removed from favorite list successfully', {
             duration: 4000,

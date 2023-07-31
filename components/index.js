@@ -28,6 +28,9 @@ import ListingCategory from './listings/ListingCategory';
 import ListingHead from './listings/ListingHead';
 import ListingInfo from './listings/ListingInfo';
 import ListingReservation from './listings/ListingReservation';
+import TripsClient from './trips/TripsClient';
+import ReservationsClient from './reservations/ReservationsClient';
+import FavoritesClient from './favorites/FavoritesClient';
 
 export {
   Header,
@@ -60,4 +63,7 @@ export {
   ListingHead,
   ListingInfo,
   ListingReservation,
+  TripsClient,
+  ReservationsClient,
+  FavoritesClient,
 };

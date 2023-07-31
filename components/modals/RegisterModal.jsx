@@ -53,6 +53,8 @@ const RegisterModal = () => {
         toast.success('Account created successfully!', {
           duration: 4000,
         });
+      modal.registerOnClose();
+      modal.loginOnOpen();
     } catch (err) {
       toast.error(err?.message || 'Something went wrong!', {
         duration: 4000,

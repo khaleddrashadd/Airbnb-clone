@@ -3,7 +3,7 @@ import { getListingById } from '@/app/actions/getListingById';
 import { getReservations } from '@/app/actions/getReservations';
 import { EmptyState, ListingClient } from '@/components';
 
-const page = async ({ params: { listingId } }) => {
+const ListingPage = async ({ params: { listingId } }) => {
   const listing = await getListingById(listingId);
   const currentUser = await getCurrentUser();
   const reservations = await getReservations(listingId);
@@ -27,4 +27,4 @@ const page = async ({ params: { listingId } }) => {
     />
   );
 };
-export default page;
+export default ListingPage;

@@ -51,9 +51,7 @@ const ListingClient = ({ listing, currentUser, reservations = [] }) => {
       .then(res => {
         toast.success('Reservation created successfully!', { duration: 2000 });
         setDateRange(intitalDate);
-        //redirect to trips
-        //router.push('/trips');
-        router.refresh();
+        router.push('/trips');
       })
       .catch(err => {
         toast.error(err || 'Something went wrong', { duration: 2000 });

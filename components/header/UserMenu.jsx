@@ -4,9 +4,11 @@ import { Avatar, MenuItem } from '..';
 import { useCallback, useState } from 'react';
 import { useClickOutside, useModal } from '@/hooks';
 import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const UserMenu = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const router =useRouter()
 
   const handleClickOutside = useCallback(() => {
     setIsOpen(false);
@@ -53,19 +55,19 @@ const UserMenu = ({ currentUser }) => {
               <>
                 <MenuItem
                   label="My Trips"
-                  onClick={() => {}}
+                  onClick={() => router.push('/trips')}
                 />
                 <MenuItem
                   label="My favorites"
-                  onClick={() => {}}
+                  onClick={() => router.push('/favorites')}
                 />
                 <MenuItem
                   label="My reservations"
-                  onClick={() => {}}
+                  onClick={() => router.push('/reservations')}
                 />
                 <MenuItem
                   label="My properties"
-                  onClick={() => {}}
+                  onClick={() => router.push('/properties')}
                 />
                 <MenuItem
                   label="Airbnb my home"

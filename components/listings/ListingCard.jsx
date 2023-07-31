@@ -9,10 +9,10 @@ import { format } from 'date-fns';
 const ListingCard = ({
   data,
   currentUser,
+  actionLabel,
   reservation,
   actionId,
   disabled,
-  actionLabel,
   onAction,
 }) => {
   const { getCountryByName } = useCountry();
@@ -27,7 +27,7 @@ const ListingCard = ({
   const price = reservation ? reservation?.totalPrice : data?.price;
 
   const handleCancel = e => {
-    e.stopPropagation();
+    e.preventDefault();
     if (disabled) return;
     onAction(actionId);
   };
