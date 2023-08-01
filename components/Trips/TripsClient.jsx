@@ -13,10 +13,9 @@ const TripsClient = ({ reservations, currentUser }) => {
   const handleCancel = id => {
     setDeletingId(id);
     removeData('reservations', id)
-      .then((res) => {
+      .then(res => {
         toast.success('Reservation canceled', { duration: 2000 });
         router.refresh();
-        console.log(res.data.reservation.count);
       })
       .catch(err =>
         toast.error(err || 'Error canceling reservation', { duration: 2000 })

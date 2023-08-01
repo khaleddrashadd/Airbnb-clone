@@ -33,6 +33,7 @@ import ReservationsClient from './reservations/ReservationsClient';
 import FavoritesClient from './favorites/FavoritesClient';
 import PropertiesClient from './properties/PropertiesClient';
 import SearchModal from './modals/SearchModal';
+import Loader from './Loader';
 
 export {
   Header,
@@ -70,4 +71,5 @@ export {
   FavoritesClient,
   PropertiesClient,
   SearchModal,
+  Loader,
 };

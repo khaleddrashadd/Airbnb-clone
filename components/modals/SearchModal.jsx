@@ -53,7 +53,6 @@ const SearchModal = () => {
 
     if (dateRange.startDate)
       updatedQuery.startDate = formatISO(dateRange.startDate);
-    console.log(formatISO(dateRange.startDate), 'startDate');
 
     if (dateRange.endDate) updatedQuery.endDate = formatISO(dateRange.endDate);
 

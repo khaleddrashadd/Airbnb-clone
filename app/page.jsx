@@ -7,7 +7,6 @@ const HomePage = async ({ searchParams }) => {
   if (listings.length === 0) {
     return <EmptyState showReset />;
   }
-
   return (
     <main className="">
       <Container>

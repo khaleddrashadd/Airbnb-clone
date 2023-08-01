@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { TbPhotoPlus } from 'react-icons/tb';
 
 const ImageUpload = ({ value, onChange, isError }) => {
-  console.log(value);
   const handleUpload = e => {
     onChange(e.info.secure_url);
   };
