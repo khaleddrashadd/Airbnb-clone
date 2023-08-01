@@ -11,7 +11,6 @@ const TripsClient = ({ properties, currentUser }) => {
   const [deletingId, setDeletingId] = useState('');
 
   const handleCancel = id => {
-    console.log(id,"💥🎉");
     setDeletingId(id);
     removeData('listings',id)
       .then(res => {

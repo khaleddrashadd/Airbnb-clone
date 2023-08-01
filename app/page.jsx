@@ -1,8 +1,8 @@
 import { Categories, Container, EmptyState, ListingCard } from '@/components';
 import { getCurrentUser, getListings } from './actions';
 
-const HomePage = async () => {
-  const listings = await getListings();
+const HomePage = async ({ searchParams }) => {
+  const listings = await getListings({ params:searchParams} );
   const currentUser = await getCurrentUser();
   if (listings.length === 0) {
     return <EmptyState showReset />;

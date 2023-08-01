@@ -32,6 +32,7 @@ import TripsClient from './trips/TripsClient';
 import ReservationsClient from './reservations/ReservationsClient';
 import FavoritesClient from './favorites/FavoritesClient';
 import PropertiesClient from './properties/PropertiesClient';
+import SearchModal from './modals/SearchModal';
 
 export {
   Header,
@@ -68,4 +69,5 @@ export {
   ReservationsClient,
   FavoritesClient,
   PropertiesClient,
+  SearchModal,
 };

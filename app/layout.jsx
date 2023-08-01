@@ -1,4 +1,4 @@
-import { Header, LoginModal, RegisterModal, RentModal } from '@/components';
+import { Header, LoginModal, RegisterModal, RentModal, SearchModal } from '@/components';
 import './globals.css';
 import { Nunito } from 'next/font/google';
 import Toast from '@/lib/Toast';
@@ -22,6 +22,7 @@ export default async function RootLayout({ children }) {
         <RentModal />
         <RegisterModal />
         <LoginModal />
+        <SearchModal />
         <Header currentUser={currentUser} />
         {children}
       </body>

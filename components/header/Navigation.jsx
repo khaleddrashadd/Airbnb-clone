@@ -1,8 +1,15 @@
+'use client';
+
+import { useModal } from '@/hooks';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { BiSearch } from 'react-icons/bi';
 
 const Navigation = () => {
+  const modal = useModal();
   return (
-    <ul className="flex sm:flex-0 items-center justify-between text-sm border-1 md:w-auto py-2 shadow-sm rounded-full hover:shadow-md transition">
+    <ul
+      onClick={modal.searchModalOnOpen}
+      className="flex sm:flex-0 items-center justify-between text-sm border-1 md:w-auto py-2 shadow-sm rounded-full hover:shadow-md transition">
       <li className="font-semibold border-r-1 px-3">
         <button>Any Where</button>
       </li>
