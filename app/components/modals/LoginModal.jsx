@@ -41,7 +41,6 @@ const LoginModal = () => {
       email,
       password,
     };
-
     setIsLoading(true);
     const res = await signIn('credentials', {
       ...data,

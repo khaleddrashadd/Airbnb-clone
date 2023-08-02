@@ -27,7 +27,7 @@ export const OPTIONS = {
         }
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials?.email,
+            email: credentials?.email?.toLowerCase(),
           },
         });
 

@@ -44,7 +44,7 @@ const RegisterModal = () => {
     if (!formIsValid) return;
 
     const data = {
-      email,
+      email:email.toLowerCase(),
       name,
       password,
     };
