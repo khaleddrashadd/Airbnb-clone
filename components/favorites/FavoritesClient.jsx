@@ -1,4 +1,6 @@
-import { Container, Heading, ListingCard } from '..';
+import Container from '../Container';
+import ListingCard from '../listings/ListingCard';
+import Heading from '../modals/Heading';
 
 const FavoritesClient = ({favorites,currentUser}) => {
   return (

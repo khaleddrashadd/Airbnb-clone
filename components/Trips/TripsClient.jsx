@@ -4,7 +4,9 @@ import { removeData } from '@/lib/axios';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { Container, Heading, ListingCard } from '..';
+import Container from '../Container';
+import Heading from '../modals/Heading';
+import ListingCard from '../listings/ListingCard';
 
 const TripsClient = ({ reservations, currentUser }) => {
   const router = useRouter();

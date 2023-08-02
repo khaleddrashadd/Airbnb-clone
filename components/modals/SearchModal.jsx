@@ -1,12 +1,20 @@
 'use client';
 
 import { useModal } from '@/hooks';
-import { Counter, CountrySelect, Heading, Map, Modal } from '..';
 import { useRouter, useSearchParams } from 'next/navigation';
 import queryString from 'query-string';
 import { useState } from 'react';
 import { formatISO } from 'date-fns';
 import { DateRange } from 'react-date-range';
+import Heading from './Heading';
+import CountrySelect from '../inputs/CountrySelect';
+const Map = dynamic(() => import('../Map'), {
+  loading: () => <p>loading...</p>,
+  ssr: false,
+});
+import Counter from '../Counter';
+import Modal from './Modal';
+import dynamic from 'next/dynamic';
 
 const STEPS = {
   LOCATION: 0,

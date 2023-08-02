@@ -1,5 +1,11 @@
-import { Avatar, ListingCategory, Map } from '@/components';
 import useCountry from '@/hooks/useCountry';
+import Avatar from '../header/Avatar';
+import ListingCategory from './ListingCategory';
+import dynamic from 'next/dynamic';
+const Map = dynamic(() => import('../Map'), {
+  loading: () => <p>loading...</p>,
+  ssr: false,
+});
 
 const ListingInfo = ({
   user,

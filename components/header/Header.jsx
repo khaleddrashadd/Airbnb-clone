@@ -1,4 +1,7 @@
-import { Container, Logo, Navigation, UserMenu } from '..';
+import Container from '../Container';
+import Logo from './Logo';
+import Navigation from './Navigation';
+import UserMenu from './UserMenu';
 
 const Header = ({ currentUser }) => {
 

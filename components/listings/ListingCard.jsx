@@ -2,9 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button, HeartButton } from '..';
 import useCountry from '@/hooks/useCountry';
 import { format } from 'date-fns';
+import HeartButton from '../HeartButton';
+import Button from '../Button';
 
 const ListingCard = ({
   data,

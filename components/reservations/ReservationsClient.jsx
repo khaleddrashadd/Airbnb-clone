@@ -1,9 +1,11 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Container, Heading, ListingCard } from '..';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
+import Container from '../Container';
+import Heading from '../modals/Heading';
+import ListingCard from '../listings/ListingCard';
 
 const ReservationsClient = ({ reservations, currentUser }) => {
   const [deletingId, setDeletingId] = useState('');

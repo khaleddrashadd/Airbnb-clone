@@ -1,5 +1,5 @@
 import { categories } from '@/data';
-import { CategoryBox } from '.';
+import CategoryBox from './CategoryBox';
 
 const Categories = () => {
   return (

@@ -1,5 +1,5 @@
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { AdjustButton } from '.';
+import AdjustButton from './AdjustButton';
 
 const Counter = ({ title, subtitle, value, onChange }) => {
   const handleIncreaseGuests = () => {

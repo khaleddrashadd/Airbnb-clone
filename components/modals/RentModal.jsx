@@ -1,20 +1,22 @@
 'use client';
 import { useModal } from '@/hooks';
-import {
-  CategoryInput,
-  Counter,
-  CountrySelect,
-  Heading,
-  ImageUpload,
-  Input,
-  Map,
-  Modal,
-} from '..';
 import { useReducer, useState } from 'react';
 import { categories } from '@/data';
 import { postData } from '@/lib/axios';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import Heading from './Heading';
+import CategoryInput from '../inputs/CategoryInput';
+import CountrySelect from '../inputs/CountrySelect';
+import Counter from '../Counter';
+import ImageUpload from '../inputs/ImageUpload';
+import Input from '../inputs/Input';
+import Modal from './Modal';
+import dynamic from 'next/dynamic';
+const Map = dynamic(() => import('../Map'), {
+  loading: () => <p>loading...</p>,
+  ssr: false,
+});
 
 const STEPS = {
   category: 0,

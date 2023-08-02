@@ -2,7 +2,7 @@
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRange } from 'react-date-range';
-import { Button } from '@/components';
+import Button from '../Button';
 
 const ListingReservation = ({
   price,

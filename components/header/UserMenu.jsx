@@ -1,10 +1,11 @@
 'use client';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { Avatar, MenuItem } from '..';
 import { useCallback, useState } from 'react';
 import { useClickOutside, useModal } from '@/hooks';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Avatar from './Avatar';
+import MenuItem from './MenuItem';
 
 const UserMenu = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);

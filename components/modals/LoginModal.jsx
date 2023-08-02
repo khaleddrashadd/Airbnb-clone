@@ -3,10 +3,13 @@ import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
 import { useState } from 'react';
 import { useInput, useModal } from '@/hooks';
-import { Button, Heading, Input, Modal } from '..';
 import { signIn } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import Heading from './Heading';
+import Input from '../inputs/Input';
+import Button from '../Button';
+import Modal from './Modal';
 
 const LoginModal = () => {
   const modal = useModal();
@@ -97,7 +100,7 @@ const LoginModal = () => {
         disabled={isLoading}
         label="Continue with Google"
         outline
-        type='button'
+        type="button"
         onClick={() => signIn('google')}
       />
       <Button
@@ -105,12 +108,12 @@ const LoginModal = () => {
         disabled={isLoading}
         label="Continue with Github"
         outline
-        type='button'
-        onClick={()=> signIn('github')}
+        type="button"
+        onClick={() => signIn('github')}
       />
       <div>
         <p className="text-center text-gray-500">
-          You don't have an account yet?{' '}
+          You don&apos;t have an account yet?
           <span
             onClick={() => {
               modal.loginOnClose();

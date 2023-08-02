@@ -1,18 +1,16 @@
 'use client';
 import { eachDayOfInterval, differenceInCalendarDays } from 'date-fns';
 
-import {
-  Container,
-  ListingHead,
-  ListingInfo,
-  ListingReservation,
-} from '@/components';
 import { categories } from '@/data';
 import { useModal } from '@/hooks';
 import { postData } from '@/lib/axios';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import Container from '../Container';
+import ListingHead from './ListingHead';
+import ListingInfo from './ListingInfo';
+import ListingReservation from './ListingReservation';
 
 const intitalDate = {
   startDate: new Date(),

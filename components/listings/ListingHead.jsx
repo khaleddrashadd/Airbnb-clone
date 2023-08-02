@@ -1,6 +1,7 @@
-import { Heading, HeartButton } from '@/components';
 import useCountry from '@/hooks/useCountry';
 import Image from 'next/image';
+import Heading from '../modals/Heading';
+import HeartButton from '../HeartButton';
 
 const ListingHead = ({ title, imgSrc, locationValue, id, currentUser }) => {
   const { getCountryByName } = useCountry();

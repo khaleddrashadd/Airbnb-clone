@@ -1,8 +1,8 @@
 'use client';
 import { useCallback } from 'react';
 import { IoMdClose } from 'react-icons/io';
-import { Button } from '..';
 import { useClickOutside } from '@/hooks';
+import Button from '../Button';
 
 const Modal = ({
   isOpen,
@@ -18,7 +18,7 @@ const Modal = ({
 }) => {
   const handleClickOutside = useCallback(() => {
     onClose();
-  }, []);
+  }, [onClose]);
   const clickRef = useClickOutside(handleClickOutside);
   const handleClose = () => {
     setTimeout(() => {

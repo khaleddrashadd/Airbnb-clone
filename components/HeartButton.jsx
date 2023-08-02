@@ -8,12 +8,12 @@ import { toast } from 'react-hot-toast';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 const HeartButton = ({ listingId, currentUser }) => {
-  const { favoriteIds } = currentUser;
+  const  favoriteIds  = currentUser?.favoriteIds;
   const modal = useModal();
   const router = useRouter();
 
   const hasFavorited = useMemo(() => {
-    return favoriteIds.includes(listingId);
+    return favoriteIds?.includes(listingId);
   }, [favoriteIds, listingId]);
 
   const toggleFavorite = e => {

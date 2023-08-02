@@ -3,10 +3,13 @@ import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
 import { useState } from 'react';
 import { useInput, useModal } from '@/hooks';
-import { Button, Heading, Input, Modal } from '..';
 import { postData } from '@/lib/axios';
 import { toast } from 'react-hot-toast';
 import { signIn } from 'next-auth/react';
+import Heading from './Heading';
+import { Input } from 'postcss';
+import Button from '../Button';
+import Modal from './Modal';
 const RegisterModal = () => {
   const modal = useModal();
   const [isLoading, setIsLoading] = useState(false);

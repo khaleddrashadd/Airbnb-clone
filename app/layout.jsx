@@ -1,8 +1,12 @@
-import { Header, LoginModal, RegisterModal, RentModal, SearchModal } from '@/components';
 import './globals.css';
 import { Nunito } from 'next/font/google';
 import Toast from '@/lib/Toast';
 import { getCurrentUser } from './actions';
+import RentModal from '@/components/modals/RentModal';
+import RegisterModal from '@/components/modals/RegisterModal';
+import LoginModal from '@/components/modals/LoginModal';
+import SearchModal from '@/components/modals/SearchModal';
+import Header from '@/components/header/Header';
 
 const nunito = Nunito({ subsets: ['latin'] });
 

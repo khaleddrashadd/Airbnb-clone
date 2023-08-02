@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Button, Heading } from '.';
+import Heading from './modals/Heading';
+import Button from './Button';
 
 const EmptyState = ({
   title = 'No exact matches',

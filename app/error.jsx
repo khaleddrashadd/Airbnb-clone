@@ -1,6 +1,6 @@
 'use client'
 
-import { EmptyState } from '@/components';
+import EmptyState from '@/components/EmptyState';
 
 const error = ({ error }) => {
   console.error(error);
