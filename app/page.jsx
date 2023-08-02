@@ -1,8 +1,8 @@
-import EmptyState from '@/components/EmptyState';
 import { getCurrentUser, getListings } from './actions';
-import Container from '@/components/Container';
-import Categories from '@/components/Categories';
-import ListingCard from '@/components/listings/ListingCard';
+import Categories from './components/Categories';
+import Container from './components/Container';
+import EmptyState from './components/EmptyState';
+import ListingCard from './components/listings/ListingCard';
 
 const HomePage = async ({ searchParams }) => {
   const listings = await getListings({ params:searchParams} );

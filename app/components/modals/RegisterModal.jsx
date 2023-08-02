@@ -7,9 +7,9 @@ import { postData } from '@/lib/axios';
 import { toast } from 'react-hot-toast';
 import { signIn } from 'next-auth/react';
 import Heading from './Heading';
-import { Input } from 'postcss';
 import Button from '../Button';
 import Modal from './Modal';
+import Input from '../inputs/Input';
 const RegisterModal = () => {
   const modal = useModal();
   const [isLoading, setIsLoading] = useState(false);

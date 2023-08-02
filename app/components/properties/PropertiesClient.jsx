@@ -8,7 +8,7 @@ import Container from '../Container';
 import Heading from '../modals/Heading';
 import ListingCard from '../listings/ListingCard';
 
-const TripsClient = ({ properties, currentUser }) => {
+const PropertiesClient = ({ properties, currentUser }) => {
   const router = useRouter();
   const [deletingId, setDeletingId] = useState('');
 
@@ -47,4 +47,4 @@ const TripsClient = ({ properties, currentUser }) => {
     </Container>
   );
 };
-export default TripsClient;
+export default PropertiesClient;

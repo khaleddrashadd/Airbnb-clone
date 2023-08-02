@@ -1,7 +1,8 @@
 import { getCurrentUser } from '@/app/actions';
 import { getListingById } from '@/app/actions/getListingById';
 import { getReservations } from '@/app/actions/getReservations';
-import { EmptyState, ListingClient } from '@/components';
+import EmptyState from '@/app/components/EmptyState';
+import ListingClient from '@/app/components/listings/ListingClient';
 
 const ListingPage = async ({ params: { listingId } }) => {
   const listing = await getListingById(listingId);
