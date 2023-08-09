@@ -1,3 +1,5 @@
+import { prisma } from '@/lib/prismadb';
+
 export const getReservations = async ({listingId,userId,authorId}) => {
   const query = {};
   if (listingId) {

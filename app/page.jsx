@@ -21,7 +21,6 @@ const HomePage = async ({ searchParams }) => {
                 key={listing.id}
                 data={listing}
                 currentUser={currentUser}
-                actionLabel="click to see more"
               />
             ))}
           </div>
