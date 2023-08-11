@@ -15,7 +15,6 @@ const HeartButton = ({ listingId, currentUser }) => {
   const hasFavorited = useMemo(() => {
     return favoriteIds?.includes(listingId);
   }, [favoriteIds, listingId]);
-
   const toggleFavorite = e => {
     e.preventDefault();
     if (!currentUser) {

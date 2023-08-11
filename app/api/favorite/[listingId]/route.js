@@ -1,9 +1,9 @@
 import { getCurrentUser } from '@/app/actions';
+import { prisma } from '@/lib/prismadb';
 import { NextResponse } from 'next/server';
 
 export async function POST(req, { params }) {
   const currentUser = await getCurrentUser();
-  // const body = await req.json();
   const { listingId } = params;
 
   if (!currentUser) {
