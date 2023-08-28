@@ -16,7 +16,7 @@
 
 ## Introduction
 
-Airbnb clone app is airbnb like web app built with NextJS with functionality to reserve and to publish your places for renting and.
+Airbnb clone app is airbnb like web app built with NextJS with functionality to reserve and to publish your places for renting.
 
 ## Demo
 
