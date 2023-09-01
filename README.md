@@ -5,7 +5,10 @@
 <div align="center">
   <h1 align="center">Airbnb clone</h1>
 </div>
-    <a style="display:flex;justify-content:center;margin-bottom:1rem; font-weight:bold;" href="https://rent-home-khaled.vercel.app/">Demo</a>
+
+
+<a style="display:flex;justify-content:center;margin-bottom:1rem; font-weight:bold;" href="https://rent-home-khaled.vercel.app/">Demo</a>
+
 
 <div align="center">
 <img alt="airbnb-clone" width="950" src="./public/images/readme1.png"/>
